@@ -1,0 +1,42 @@
+{
+  "Veg": [
+    {
+      "name": "Margherita",
+      "base_price": 150
+    },
+    {
+      "name": "Farmhouse",
+      "base_price": 200
+    }
+  ],
+  "Non-Veg": [
+    {
+      "name": "Chicken Tikka",
+      "base_price": 250
+    }
+  ],
+  "Specials": [
+    {
+      "name": "Paneer Overload",
+      "base_price": 300
+    }
+  ],
+  "Sizes": {
+    "Small": 0,
+    "Medium": 50,
+    "Large": 100
+  },
+  "Crusts": {
+    "Thin": 0,
+    "Cheese Burst": 40,
+    "Stuffed": 60
+  },
+  "Toppings": {
+    "Olives": 20,
+    "Capsicum": 15,
+    "Mushroom": 25,
+    "Jalapenos": 25,
+    "Chicken": 40,
+    "Paneer": 30
+  }
+}
