@@ -22,13 +22,13 @@ def main():
 
         elif choice == "2":
             password = input("Enter Admin Password: ")
-            if password == "admin123":  # You can replace with env var or file-based in future
+            if password == "admin123":
                 show_admin_menu()
             else:
                 print("❌ Incorrect password. Access denied.")
 
         elif choice == "3":
-            print("👋 Thank you for using PyPizza. Goodbye!")
+            print("👋 Thank you for using app. Goodbye!")
             break
 
         else:

@@ -1,60 +1,47 @@
 # menu_module.py
 
-# === Pizza Base Menu ===
-PIZZAS = {
-    "Margherita": 200,
-    "Pepperoni": 250,
-    "Farmhouse": 220,
-    "Tandoori Paneer": 240,
-    "BBQ Chicken": 270,
-    "Veggie Delight": 210
-}
+import json
+import os
 
-# === Size Options and Additional Prices ===
-SIZES = {
-    "Small": 0,
-    "Medium": 50,
-    "Large": 100
-}
+MENU_FILE = os.path.join("data", "menu.json")
 
-# === Crust Options and Additional Prices ===
-CRUSTS = {
-    "Thin": 0,
-    "Cheese Burst": 60,
-    "Stuffed": 80
-}
+def load_menu():
+    """Loads the menu from the JSON file."""
+    with open(MENU_FILE, "r") as f:
+        data = json.load(f)
+    return data["pizzas"], data["sizes"], data["crusts"], data["toppings"]
 
-# === Toppings and Prices ===
-TOPPINGS = {
-    "Extra Cheese": 30,
-    "Mushrooms": 20,
-    "Olives": 25,
-    "Capsicum": 15,
-    "Jalapenos": 25,
-    "Onions": 15,
-    "Paneer": 30,
-    "Chicken Sausage": 35
-}
+def save_menu(pizzas, sizes, crusts, toppings):
+    """Save updated menu back to the JSON file."""
+    with open(MENU_FILE, "w") as f:
+        json.dump({
+            "pizzas": pizzas,
+            "sizes": sizes,
+            "crusts": crusts,
+            "toppings": toppings
+        }, f, indent=4)
+
 
 def show_menu():
     """Prints the full pizza menu to the console."""
+    pizzas, sizes, crusts, toppings = load_menu()
+
     print("\n🍕 Pizza Menu:")
-    for name, price in PIZZAS.items():
+    for name, price in pizzas.items():
         print(f"  {name:<20} ₹{price}")
 
     print("\n📏 Sizes (extra cost):")
-    for size, add_price in SIZES.items():
+    for size, add_price in sizes.items():
         print(f"  {size:<10} +₹{add_price}")
 
     print("\n🍞 Crust Options (extra cost):")
-    for crust, add_price in CRUSTS.items():
+    for crust, add_price in crusts.items():
         print(f"  {crust:<15} +₹{add_price}")
 
     print("\n🧀 Toppings (each at extra cost):")
-    for topping, add_price in TOPPINGS.items():
+    for topping, add_price in toppings.items():
         print(f"  {topping:<20} +₹{add_price}")
     print()
-
 
 def get_menu_data():
     """
@@ -62,4 +49,4 @@ def get_menu_data():
 
     :return: tuple of (pizzas, sizes, crusts, toppings)
     """
-    return PIZZAS, SIZES, CRUSTS, TOPPINGS
+    return load_menu()

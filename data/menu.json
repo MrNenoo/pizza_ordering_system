@@ -1,0 +1,30 @@
+{
+  "pizzas": {
+    "Margherita": 200,
+    "Pepperoni": 250,
+    "Farmhouse": 220,
+    "Tandoori Paneer": 240,
+    "BBQ Chicken": 270,
+    "Veggie Delight": 210
+  },
+  "sizes": {
+    "Small": 0,
+    "Medium": 50,
+    "Large": 100
+  },
+  "crusts": {
+    "Thin": 0,
+    "Cheese Burst": 60,
+    "Stuffed": 80
+  },
+  "toppings": {
+    "Extra Cheese": 30,
+    "Mushrooms": 20,
+    "Olives": 25,
+    "Capsicum": 15,
+    "Jalapenos": 25,
+    "Onions": 15,
+    "Paneer": 30,
+    "Chicken Sausage": 35
+  }
+}

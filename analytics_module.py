@@ -1,9 +1,9 @@
 import matplotlib
-matplotlib.use("TkAgg")
 import matplotlib.pyplot as plt
 from collections import Counter
 import csv
 import os
+matplotlib.use("TkAgg")
 
 ORDER_FILE = "orders.csv"
 

@@ -1,8 +1,7 @@
 # admin_module.py
 
-from menu_module import PIZZAS, SIZES, CRUSTS, TOPPINGS, show_menu
-from data_module import load_orders_from_csv
-from data_module import get_sales_summary
+from menu_module import show_menu, load_menu, save_menu
+from data_module import load_orders_from_csv, get_sales_summary
 from analytics_module import show_sales_charts
 
 
@@ -50,33 +49,39 @@ def show_admin_menu():
 
 
 def add_pizza_item():
+    pizzas, sizes, crusts, toppings = load_menu()
     name = input("Enter new pizza name: ").strip()
-    if name in PIZZAS:
+    if name in pizzas:
         print("⚠️ Pizza already exists.")
         return
     try:
         price = int(input("Enter price: ").strip())
-        PIZZAS[name] = price
+        pizzas[name] = price
+        save_menu(pizzas, sizes, crusts, toppings)
         print(f"✅ {name} added at ₹{price}")
     except ValueError:
         print("❌ Invalid price entered.")
 
 
 def remove_pizza_item():
+    pizzas, sizes, crusts, toppings = load_menu()
     name = input("Enter pizza name to remove: ").strip()
-    if name in PIZZAS:
-        del PIZZAS[name]
+    if name in pizzas:
+        del pizzas[name]
+        save_menu(pizzas, sizes, crusts, toppings)
         print(f"✅ {name} removed.")
     else:
         print("❌ Pizza not found.")
 
 
 def update_pizza_price():
+    pizzas, sizes, crusts, toppings = load_menu()
     name = input("Enter pizza name to update: ").strip()
-    if name in PIZZAS:
+    if name in pizzas:
         try:
             new_price = int(input("Enter new price: ").strip())
-            PIZZAS[name] = new_price
+            pizzas[name] = new_price
+            save_menu(pizzas, sizes, crusts, toppings)
             print(f"✅ {name} price updated to ₹{new_price}")
         except ValueError:
             print("❌ Invalid price.")
@@ -96,7 +101,7 @@ def show_sales_report():
 
 
 def view_all_orders():
-    orders = (load_orders_from_csv())
+    orders = load_orders_from_csv()
     if not orders:
         print("📭 No orders found.")
         return
